@@ -27,15 +27,15 @@ bool LogoScene::init()
 		return false;
 	}
 
+
 	//Label
-	auto playGame = Label::createWithSystemFont("HELLO WORLD", "Marker Felt", 28);
+	auto playGame = Label::createWithSystemFont("Hello World!", "Marker Felt", 28);
 	playGame->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
 
 	addChild(playGame);
 
-	auto scaleBig = ScaleTo::create(1.0f, 2.0f);
-	auto scaleSmall = ScaleTo::create(1.0f, 1.0f);
-	auto sequenceLaybel = Sequence::create(scaleBig, scaleSmall, nullptr);
+	auto scaleBig = ScaleTo::create(3.0f, 1.5f);
+	auto sequenceLaybel = Sequence::create(scaleBig, nullptr);
 	auto repeatLaybel = RepeatForever::create(sequenceLaybel);
 	playGame->runAction(repeatLaybel);
 
@@ -53,6 +53,7 @@ bool LogoScene::init()
 
 	logo->runAction(repeat);
 
+
 	//loading bar
 	auto loadingBarGB = Sprite::create("loadingbar_bg.png");
 	loadingBarGB->setPosition(screenSize.width/2,50);
@@ -66,7 +67,7 @@ bool LogoScene::init()
 
 	addChild(loadingbar);
 
-	//update Loading Bar
+		//update Loading Bar
 	auto updateLoadingBar = CallFunc::create([]() {
 		if (loadingbar->getPercent() < 100)
 		{
@@ -79,6 +80,7 @@ bool LogoScene::init()
 	loadingBarGB->runAction(repeatLoadingBar);
 	
 	
+	//tu dong chuyen trang sau t(s)
 	auto gotoNext = CallFunc::create([]() {
 		Director::getInstance()->replaceScene(MenuScene::createScene());
 	});

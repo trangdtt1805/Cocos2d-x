@@ -23,6 +23,18 @@ bool MenuScene::init()
 	auto screenSize = Director::getInstance()->getVisibleSize();
 
 
+	//Label
+	auto playGame = Label::createWithSystemFont("Hello World!", "Marker Felt", 28);
+	playGame->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
+
+	addChild(playGame);
+
+	auto scaleBig = ScaleTo::create(3.0f, 1.5f);
+	auto sequenceLaybel = Sequence::create(scaleBig, nullptr);
+	auto repeatLaybel = RepeatForever::create(sequenceLaybel);
+	playGame->runAction(repeatLaybel);
+
+
 	//Menu
 	/*auto closeItem = MenuItemImage::create("CloseNormal.png",
 		"CloseSelected.png",
@@ -43,9 +55,13 @@ bool MenuScene::init()
 	auto itemAbout = MenuItemFont::create("About", nullptr);    
 	
 	itemPlay->setPosition(screenSize.width / 2, 200);
+	itemPlay->setColor(Color3B::RED);
 	itemSetting->setPosition(screenSize.width / 2, 150);
+	itemSetting->setColor(Color3B::YELLOW);
 	itemMoreGame->setPosition(screenSize.width / 2, 100);
+	itemMoreGame->setColor(Color3B::BLUE);
 	itemAbout->setPosition(screenSize.width / 2, 50);
+	itemAbout->setColor(Color3B::WHITE);
 	
 	auto menuLabel = Menu::create(itemPlay, itemSetting, itemMoreGame, itemAbout, nullptr); 
 	menuLabel->setPosition(0, 0); 
@@ -61,9 +77,33 @@ bool MenuScene::init()
 
 	ratingButton->setAnchorPoint(Vec2(1, 0));
 	ratingButton->setPosition(Vec2(screenSize.width, 0));
+	ratingButton->setScale(0.5f);
 	addChild(ratingButton);
 
+	//Creat button setting
+	auto settingButton = ui::Button::create("setting_normal.png","setting_pressed.png");
+	settingButton->addClickEventListener([&](Ref* event)
+	{
+		log("Setting clicked");
+	});
+	settingButton->setAnchorPoint(Vec2(1, 0));
+	settingButton->setPosition(Vec2(screenSize.width - 40, 0));
+	settingButton->setScale(0.5f);
+	addChild(settingButton);
 
+
+	////Creat Checkbox
+	//static auto checkbox = ui::CheckBox::create("checkbox_normal.png",
+	//	"checkbox_pressed.png", "checkbox_checked.png",
+	//	"checkbox_normal_disable.png", "checkbox_checked_disable.png");
+	//checkbox->setSelected(true);
+	//checkbox->addClickEventListener([&](Ref* event) {
+	//	log("CheckBox state: %d", checkbox->isSelected());
+	//	CCLOG("ab");
+	//});
+	//checkbox->setPosition(Vec2(screenSize.width - 220, 50));
+	//checkbox->setEnabled(true);
+	//addChild(checkbox);
 	return true;
 }
 
