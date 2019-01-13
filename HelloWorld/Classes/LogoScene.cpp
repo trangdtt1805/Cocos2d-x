@@ -1,4 +1,6 @@
 #include "LogoScene.h"
+#include "MenuScene.h"
+#include <time.h>
 
 
 USING_NS_CC;
@@ -42,6 +44,12 @@ bool LogoScene::init()
 
 	logo->runAction(repeat);
 	
+	auto gotoNext = CallFunc::create([]() {
+		Director::getInstance()->replaceScene(MenuScene::createScene());
+	});
+
+	auto changeScene = Sequence::create(DelayTime::create(7), gotoNext, nullptr);
+	runAction(changeScene);
 
 	return true;
 }
