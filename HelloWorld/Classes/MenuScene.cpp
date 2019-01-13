@@ -1,5 +1,6 @@
 #include "MenuScene.h"
 #include "LogoScene.h"
+#include "ui/CocosGUI.h"
 
 
 USING_NS_CC;
@@ -21,17 +22,6 @@ bool MenuScene::init()
 
 	auto screenSize = Director::getInstance()->getVisibleSize();
 
-	//Label
-	auto playGame = Label::createWithSystemFont("Play Game","Arial",16);
-	playGame->setPosition(screenSize.width/2,screenSize.height/2 + 100);
-	
-	addChild(playGame);
-
-	auto scaleBig = ScaleTo::create(1.0f,2.0f);
-	auto scaleSmall = ScaleTo::create(1.0f, 1.0f);
-	auto sequence = Sequence::create(scaleBig,scaleSmall,nullptr);
-	auto repeat = RepeatForever::create(sequence);
-	playGame->runAction(repeat);
 
 	//Menu
 	/*auto closeItem = MenuItemImage::create("CloseNormal.png",
@@ -62,8 +52,16 @@ bool MenuScene::init()
 	addChild(menuLabel);
 
 
+	//button
+	auto ratingButton = ui::Button::create("rating_normal.png", "rating_pressed.png");
+	ratingButton->addClickEventListener([&](Ref* event)
+	{
+		log("Rating clicked");
+	});
 
-
+	ratingButton->setAnchorPoint(Vec2(1, 0));
+	ratingButton->setPosition(Vec2(screenSize.width, 0));
+	addChild(ratingButton);
 
 
 	return true;
