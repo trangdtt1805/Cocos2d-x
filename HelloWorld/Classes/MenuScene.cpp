@@ -91,6 +91,17 @@ bool MenuScene::init()
 	settingButton->setScale(0.5f);
 	addChild(settingButton);
 
+	//Creat button exit
+	auto exitButton = ui::Button::create("exit_normal.png", "exit_pressed.png");
+	exitButton->addClickEventListener([&](Ref* event)
+	{
+		log("Exit clicked");
+	});
+	exitButton->setAnchorPoint(Vec2(1, 0));
+	exitButton->setPosition(Vec2(screenSize.width - 80, 0));
+	exitButton->setScale(0.15f);
+	addChild(exitButton);
+
 
 	////Creat Checkbox
 	//static auto checkbox = ui::CheckBox::create("checkbox_normal.png",
