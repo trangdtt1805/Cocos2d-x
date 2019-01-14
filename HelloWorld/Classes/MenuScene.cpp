@@ -106,6 +106,13 @@ bool MenuScene::init()
 	exitButton->setScale(0.15f);
 	addChild(exitButton);
 
+
+	//Particle System
+	auto particleSystem = ParticleSystemQuad::create("SpinningPeas.plist");
+	auto emitter = ParticleFireworks::create(); 
+	addChild(emitter);
+	
+	
 	return true;
 }
 
