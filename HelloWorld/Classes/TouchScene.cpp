@@ -1,8 +1,6 @@
-#include "ui/CocosGUI.h"
+//#include "ui/CocosGUI.h"
 #include "TouchScene.h"
-#include <iostream>
-
-using namespace std;
+#include "MenuScene.h"
 
 
 USING_NS_CC;
@@ -16,15 +14,6 @@ Scene* TouchScene::createScene()
 }
 
 
-bool TouchScene::onTouchBegan(Touch* touch, Event *event) {
-	return true;
-}
-void TouchScene::onTouchMoved(Touch* touch, Event* event) {}
-
-void TouchScene::onTouchEnded(Touch* touch, Event* event) {}
-
-
-
 bool TouchScene::init()
 {
 	if (!Layer::init())
@@ -33,18 +22,27 @@ bool TouchScene::init()
 	}
 
 	auto screenSize = Director::getInstance()->getVisibleSize();
-
 	
-	auto heart = Sprite::create("heart.png");
-	heart->setPosition(screenSize.width,screenSize.height);
-	addChild(heart);
 
-	/*auto listener = EventListenerTouchOneByone::create();
-	listener->onTouchBegan = CC_CALLBACK_2(TouchScene::onTouchBegan, this); 
-	listener->onTouchMoved = CC_CALLBACK_2(TouchScene::onTouchMoved, this); 
-	listener->onTouchEnded = CC_CALLBACK_2(TouchScene::onTouchEnded, this); 
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-*/
+
+
+	////tao su kien xu ly 1 diem cham tren man hinh
+	//auto listener = EventListenerTouchOneByOne::create();
+	//listener->onTouchBegan = CC_CALLBACK_2(TouchScene::onTouchBegan,this);
+	////this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	//_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
 	return true;
 }
 
+
+bool TouchScene::onTouchBegan(Touch *touch, Event *event)
+{
+	Vec2 touchLocation = touch->getLocation();//toa do cham tren man hinh
+
+	auto heart = Sprite::create("heart.png");
+	heart->setPosition(touchLocation);
+
+	addChild(heart);
+
+	return true;
+}

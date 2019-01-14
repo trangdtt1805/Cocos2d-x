@@ -1,6 +1,9 @@
 #include "MenuScene.h"
 #include "LogoScene.h"
 #include "ui/CocosGUI.h"
+#include "ParticleScene.h"
+#include "TouchScene.h"
+#include "cocos2d.h"
 
 
 USING_NS_CC;
@@ -28,7 +31,7 @@ bool MenuScene::init()
 
 
 	//Label
-	auto playGame = Label::createWithSystemFont("Hello World!", "Marker Felt", 28);
+	auto playGame = Label::createWithSystemFont("Hello World!", "fonts/Marker Felt", 28);
 	playGame->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
 
 	addChild(playGame);
@@ -39,25 +42,21 @@ bool MenuScene::init()
 	playGame->runAction(repeatLaybel);
 
 
-	//Menu
-	/*auto closeItem = MenuItemImage::create("CloseNormal.png",
-		"CloseSelected.png",
-		[](Ref* sender) {
-		exit(0);
-	});
+	//Play
+	auto itemPlay = MenuItemFont::create("Play", [&](Ref* play) 
+	{   
+		auto gotoNext = CallFunc::create([]() {
+			Director::getInstance()->replaceScene(ParticleScene::createScene());
+		});
+		runAction(Sequence::create(DelayTime::create(0), gotoNext, nullptr));
+	}); 
 
-	closeItem->setAnchorPoint(Vec2(1, 1)); 
-	closeItem->setPosition(800, 480);
 
-	auto myMenu = Menu::create(closeItem, nullptr); 
-	myMenu->setPosition(0, 0); 
-	addChild(myMenu);*/
-
-	auto itemPlay = MenuItemFont::create("Play", nullptr); 
-	auto itemSetting = MenuItemFont::create("Setting", nullptr); 
+	auto itemSetting = MenuItemFont::create("Setting", nullptr);
 	auto itemMoreGame = MenuItemFont::create("More Game", nullptr); 
 	auto itemAbout = MenuItemFont::create("About", nullptr);    
 	
+	//set color to Menu
 	itemPlay->setPosition(screenSize.width / 2, 200);
 	itemPlay->setColor(Color3B::RED);
 	itemSetting->setPosition(screenSize.width / 2, 150);
@@ -71,7 +70,7 @@ bool MenuScene::init()
 	menuLabel->setPosition(0, 0); 
 	addChild(menuLabel);
 
-
+	
 	//button
 	auto ratingButton = ui::Button::create("rating_normal.png", "rating_pressed.png");
 	ratingButton->addClickEventListener([&](Ref* event)
@@ -84,6 +83,7 @@ bool MenuScene::init()
 	ratingButton->setScale(0.5f);
 	addChild(ratingButton);
 
+
 	//Creat button setting
 	auto settingButton = ui::Button::create("setting_normal.png","setting_pressed.png");
 	settingButton->addClickEventListener([&](Ref* event)
@@ -95,6 +95,7 @@ bool MenuScene::init()
 	settingButton->setScale(0.5f);
 	addChild(settingButton);
 
+
 	//Creat button exit
 	auto exitButton = ui::Button::create("exit_normal.png", "exit_pressed.png");
 	exitButton->addClickEventListener([&](Ref* event)
@@ -105,14 +106,8 @@ bool MenuScene::init()
 	exitButton->setPosition(Vec2(screenSize.width - 80, 0));
 	exitButton->setScale(0.15f);
 	addChild(exitButton);
+	
 
 
-	//Particle System
-	auto particleSystem = ParticleSystemQuad::create("SpinningPeas.plist");
-	auto emitter = ParticleFireworks::create(); 
-	addChild(emitter);
-	
-	
 	return true;
 }
-

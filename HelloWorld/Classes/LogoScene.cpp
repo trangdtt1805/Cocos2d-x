@@ -31,11 +31,12 @@ bool LogoScene::init()
 
 	auto backgroundLogo = Sprite::create("background.png");
 	backgroundLogo->setPosition(screenSize.width / 2, screenSize.height / 2);
+	backgroundLogo->setContentSize(screenSize);
 	addChild(backgroundLogo);
 	
 	
 	//Label
-	auto helloworld = Label::createWithSystemFont("Hello World!", "Marker Felt", 28);
+	auto helloworld = Label::createWithSystemFont("Hello World!", "fonts/gfmatildabold", 28);
 	helloworld->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
 
 	addChild(helloworld);
@@ -116,7 +117,7 @@ bool LogoScene::init()
 		Director::getInstance()->replaceScene(MenuScene::createScene());
 	});
 
-	auto changeScene = Sequence::create(DelayTime::create(7), gotoNext, nullptr);
+	auto changeScene = Sequence::create(DelayTime::create(5), gotoNext, nullptr);
 	runAction(changeScene);
 
 	return true;
