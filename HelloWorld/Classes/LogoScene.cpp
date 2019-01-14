@@ -1,5 +1,5 @@
-#include "LogoScene.h"
 #include "MenuScene.h"
+#include "LogoScene.h"
 #include "ui/CocosGUI.h"
 #include <vector>
 #include <time.h>
@@ -29,22 +29,22 @@ bool LogoScene::init()
 		return false;
 	}*/
 
-	auto backgroundLogo = Sprite::create("background.png");
+	auto backgroundLogo = Sprite::create("background2.png");
 	backgroundLogo->setPosition(screenSize.width / 2, screenSize.height / 2);
 	backgroundLogo->setContentSize(screenSize);
 	addChild(backgroundLogo);
 	
 	
 	//Label
-	auto helloworld = Label::createWithSystemFont("Hello World!", "fonts/gfmatildabold", 28);
-	helloworld->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
+	auto helloworlds = Label::createWithBMFont("Hello World!", "Marker Felt.ttf");
+	helloworlds->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
 
-	addChild(helloworld);
+	addChild(helloworlds);
 
 	auto scaleBig = ScaleTo::create(3.0f, 1.5f);
 	auto sequenceLaybel = Sequence::create(scaleBig, nullptr);
 	auto repeatLaybel = RepeatForever::create(sequenceLaybel);
-	helloworld->runAction(repeatLaybel);
+	helloworlds->runAction(repeatLaybel);
 
 	////logo
 	//auto logo = Sprite::create("mySprite.png");
@@ -88,7 +88,7 @@ bool LogoScene::init()
 
 	//loading bar
 	auto loadingBarGB = Sprite::create("loadingbar_bg.png");
-	loadingBarGB->setPosition(screenSize.width/2,50);
+	loadingBarGB->setPosition(Vec2(screenSize.width / 2, 50));
 	
 	addChild(loadingBarGB);
 
@@ -112,7 +112,7 @@ bool LogoScene::init()
 	loadingBarGB->runAction(repeatLoadingBar);
 	
 	
-	//tu dong chuyen trang sau t(s)
+	////tu dong chuyen trang sau t(s)
 	auto gotoNext = CallFunc::create([]() {
 		Director::getInstance()->replaceScene(MenuScene::createScene());
 	});

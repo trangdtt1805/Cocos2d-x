@@ -50,10 +50,10 @@
     <ClInclude Include="..\Classes\MenuScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\TouchScene.h">
+    <ClInclude Include="..\Classes\ParticleScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ParticleScene.h">
+    <ClInclude Include="..\Classes\TouchScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

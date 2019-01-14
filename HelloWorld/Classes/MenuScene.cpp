@@ -2,8 +2,8 @@
 #include "LogoScene.h"
 #include "ui/CocosGUI.h"
 #include "ParticleScene.h"
-#include "TouchScene.h"
 #include "cocos2d.h"
+#include "TouchScene.h"
 
 
 USING_NS_CC;
@@ -22,7 +22,7 @@ bool MenuScene::init()
 	{
 		return false;
 	}
-
+	
 	auto screenSize = Director::getInstance()->getVisibleSize();
 
 	auto backgroundLogo = Sprite::create("background.png");
@@ -41,17 +41,16 @@ bool MenuScene::init()
 	auto repeatLaybel = RepeatForever::create(sequenceLaybel);
 	playGame->runAction(repeatLaybel);
 
-
 	//Play
 	auto itemPlay = MenuItemFont::create("Play", [&](Ref* play) 
 	{   
 		auto gotoNext = CallFunc::create([]() {
-			Director::getInstance()->replaceScene(ParticleScene::createScene());
+			Director::getInstance()->replaceScene(TouchScene::createScene());
 		});
 		runAction(Sequence::create(DelayTime::create(0), gotoNext, nullptr));
 	}); 
 
-
+	
 	auto itemSetting = MenuItemFont::create("Setting", nullptr);
 	auto itemMoreGame = MenuItemFont::create("More Game", nullptr); 
 	auto itemAbout = MenuItemFont::create("About", nullptr);    

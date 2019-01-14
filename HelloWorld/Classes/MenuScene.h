@@ -1,5 +1,4 @@
-#ifndef __MENU_SCENE_H__
-#define __MENU_SCENE_H__
+#pragma once 
 
 #include "cocos2d.h"
 
@@ -14,4 +13,3 @@ public:
     CREATE_FUNC(MenuScene);
 };
 
-#endif // __MENU_SCENE_H__

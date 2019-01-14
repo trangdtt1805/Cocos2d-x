@@ -1,5 +1,4 @@
-#ifndef __LOGO_SCENE_H__
-#define __LOGO_SCENE_H__
+#pragma once 
 
 #include "cocos2d.h"
 
@@ -14,5 +13,3 @@ public:
 
     CREATE_FUNC(LogoScene);
 };
-
-#endif // __LOGO_SCENE_H__

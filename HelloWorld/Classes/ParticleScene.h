@@ -1,6 +1,4 @@
-#ifndef __TOUCH_SCENE_H__
-#define __TOUCH_SCENE_H__
-
+#pragma once 
 #include "cocos2d.h"
 
 class ParticleScene : public cocos2d::Layer
@@ -13,4 +11,3 @@ public:
     CREATE_FUNC(ParticleScene);
 };
 
-#endif // __TOUCH_SCENE_H__

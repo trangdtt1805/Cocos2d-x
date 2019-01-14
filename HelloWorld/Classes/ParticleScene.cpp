@@ -23,7 +23,6 @@ bool ParticleScene::init()
 
 	auto screenSize = Director::getInstance()->getVisibleSize();
 
-
 	cocos2d::ParticleSystemQuad *m_emitter;
 	m_emitter = ParticleSystemQuad::create("particles/particle_texture.plist");
 	m_emitter->setVisible(true);
