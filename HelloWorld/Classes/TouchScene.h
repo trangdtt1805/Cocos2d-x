@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-class LogoScene : public cocos2d::Layer
+class TouchScene : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
@@ -12,7 +12,7 @@ public:
 	virtual bool init();
     
 
-    CREATE_FUNC(LogoScene);
+    CREATE_FUNC(TouchScene);
 };
 
 #endif // __LOGO_SCENE_H__

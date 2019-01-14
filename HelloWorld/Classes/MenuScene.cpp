@@ -22,6 +22,10 @@ bool MenuScene::init()
 
 	auto screenSize = Director::getInstance()->getVisibleSize();
 
+	auto backgroundLogo = Sprite::create("background.png");
+	backgroundLogo->setPosition(screenSize.width / 2, screenSize.height / 2);
+	addChild(backgroundLogo);
+
 
 	//Label
 	auto playGame = Label::createWithSystemFont("Hello World!", "Marker Felt", 28);
@@ -102,19 +106,6 @@ bool MenuScene::init()
 	exitButton->setScale(0.15f);
 	addChild(exitButton);
 
-
-	////Creat Checkbox
-	//static auto checkbox = ui::CheckBox::create("checkbox_normal.png",
-	//	"checkbox_pressed.png", "checkbox_checked.png",
-	//	"checkbox_normal_disable.png", "checkbox_checked_disable.png");
-	//checkbox->setSelected(true);
-	//checkbox->addClickEventListener([&](Ref* event) {
-	//	log("CheckBox state: %d", checkbox->isSelected());
-	//	CCLOG("ab");
-	//});
-	//checkbox->setPosition(Vec2(screenSize.width - 220, 50));
-	//checkbox->setEnabled(true);
-	//addChild(checkbox);
 	return true;
 }
 
