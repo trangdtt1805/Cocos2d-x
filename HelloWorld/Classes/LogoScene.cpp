@@ -5,6 +5,7 @@
 #include <time.h>
 
 
+
 USING_NS_CC;
 
 Scene* LogoScene::createScene()
@@ -18,39 +19,38 @@ Scene* LogoScene::createScene()
 
 bool LogoScene::init()
 {
-	if (!Layer::init())
+	if (!LayerColor::initWithColor(Color4B(242, 2172, 19, 200)))
 	{
 		return false;
 	}
-
 	auto screenSize = Director::getInstance()->getVisibleSize();
-
-	/*if (!LayerColor::initWithColor(Color4B(255, 0, 34, 255))) {
-		return false;
-	}*/
-
-	auto backgroundLogo = Sprite::create("background2.png");
-	backgroundLogo->setPosition(screenSize.width / 2, screenSize.height / 2);
-	backgroundLogo->setContentSize(screenSize);
-	addChild(backgroundLogo);
-	
 	
 	//Label
-	auto helloworlds = Label::createWithBMFont("Hello World!", "Marker Felt.ttf");
-	helloworlds->setPosition(screenSize.width / 2, screenSize.height / 2 + 100);
+	auto helloworlds = Label::createWithTTF("Hello World!", "fonts/Marker Felt.ttf",70);
+	helloworlds->setPosition(screenSize.width / 2, screenSize.height / 2);
 
 	addChild(helloworlds);
 
-	auto scaleBig = ScaleTo::create(3.0f, 1.5f);
-	auto sequenceLaybel = Sequence::create(scaleBig, nullptr);
+	auto scaleBig = ScaleTo::create(1.0f, 1.2f);
+	auto scaleSmall = ScaleTo::create(1.0f,1.0f);
+	auto sequenceLaybel = Sequence::create(scaleBig,scaleSmall, nullptr);
 	auto repeatLaybel = RepeatForever::create(sequenceLaybel);
 	helloworlds->runAction(repeatLaybel);
 
-	////logo
-	//auto logo = Sprite::create("mySprite.png");
-	//logo->setPosition(screenSize.width / 2,screenSize.height/2);
+	////animation
+	//auto beeMC = Sprite::create();
+	//beeMC->setPosition(screenSize.width/2, screenSize.height/2);
+	//addChild(beeMC);
 
-	//addChild(logo);
+	//cocos2d::Vector<cocos2d::SpriteFrame*> animFrames;
+
+	//animFrames.pushBack(SpriteFrame::create("bee1.png", Rect(0, 0, 150, 150)));
+	//animFrames.pushBack(SpriteFrame::create("bee2.png", Rect(0, 0, 150, 150)));
+	//animFrames.pushBack(SpriteFrame::create("bee3.png", Rect(0, 0, 150, 150)));
+
+	//auto animation = Animation::createWithSpriteFrames(animFrames,0.1f);
+	//auto animate = Animate::create(animation);
+	//beeMC->runAction(RepeatForever::create(animate));
 
 	//auto moveTo = MoveTo::create(1.0f, Vec2(100, screenSize.height / 2));
 	//auto moveTo1 = MoveTo::create(2.0f, Vec2(400, screenSize.height / 2));
@@ -59,32 +59,7 @@ bool LogoScene::init()
 	//auto sequence = Sequence::create(moveTo,moveTo1,moveTo2,nullptr);
 	//auto repeat = RepeatForever::create(sequence);
 
-	//logo->runAction(repeat);
-
-
-	//animation
-	auto beeMC = Sprite::create();
-	beeMC->setPosition(screenSize.width/2, screenSize.height/2);
-	addChild(beeMC);
-
-	cocos2d::Vector<cocos2d::SpriteFrame*> animFrames;
-
-	animFrames.pushBack(SpriteFrame::create("bee1.png", Rect(0, 0, 150, 150)));
-	animFrames.pushBack(SpriteFrame::create("bee2.png", Rect(0, 0, 150, 150)));
-	animFrames.pushBack(SpriteFrame::create("bee3.png", Rect(0, 0, 150, 150)));
-
-	auto animation = Animation::createWithSpriteFrames(animFrames,0.1f);
-	auto animate = Animate::create(animation);
-	beeMC->runAction(RepeatForever::create(animate));
-
-	auto moveTo = MoveTo::create(1.0f, Vec2(100, screenSize.height / 2));
-	auto moveTo1 = MoveTo::create(2.0f, Vec2(400, screenSize.height / 2));
-	auto moveTo2 = MoveTo::create(1.0f, Vec2(screenSize.width / 2, screenSize.height / 2));
-
-	auto sequence = Sequence::create(moveTo,moveTo1,moveTo2,nullptr);
-	auto repeat = RepeatForever::create(sequence);
-
-	beeMC->runAction(repeat);
+	//beeMC->runAction(repeat);
 
 	//loading bar
 	auto loadingBarGB = Sprite::create("loadingbar_bg.png");
@@ -94,6 +69,7 @@ bool LogoScene::init()
 
 	static auto loadingbar = ui::LoadingBar::create("loadingbar_bg.png");
 	loadingbar->setPercent(0);
+	loadingbar->setScale(0.2f);
 	loadingbar->setDirection(ui::LoadingBar::Direction::LEFT);
 	loadingbar->setPosition(loadingBarGB->getPosition());
 

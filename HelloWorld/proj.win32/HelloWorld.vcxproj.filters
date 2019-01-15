@@ -27,10 +27,10 @@
     <ClCompile Include="..\Classes\MenuScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\TouchScene.cpp">
+    <ClCompile Include="..\Classes\PlayScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ParticleScene.cpp">
+    <ClCompile Include="..\Classes\SettingScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClInclude Include="..\Classes\MenuScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ParticleScene.h">
+    <ClInclude Include="..\Classes\PlayScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\TouchScene.h">
+    <ClInclude Include="..\Classes\SettingScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
