@@ -25,7 +25,7 @@ bool PlayScene::init()
 	auto screenSize = Director::getInstance()->getVisibleSize();
 
 	cocos2d::ParticleSystemQuad *m_emitter;
-	m_emitter = ParticleSystemQuad::create("particles/particle_texture.plist");
+	m_emitter = ParticleSystemQuad::create("particle/particle_texture.plist");
 	m_emitter->setVisible(true);
 	this->addChild(m_emitter, 50);
 	m_emitter->setPosition(screenSize.width/2,screenSize.height/2);

@@ -4,6 +4,7 @@
 #include "PlayScene.h"
 #include "cocos2d.h"
 #include "SettingScene.h"
+#include "ui/CocosGUI.h"
 
 
 USING_NS_CC;
@@ -110,7 +111,12 @@ bool MenuScene::init()
 	//exitButton->setScale(0.15f);
 	//addChild(exitButton);
 	
-
+	cocos2d::ParticleSystemQuad *m_emitter;
+	m_emitter = ParticleSystemQuad::create("particle/particle_texture.plist");
+	m_emitter->setVisible(true);
+	this->addChild(m_emitter, 50);
+	m_emitter->setPosition(screenSize.width / 2, screenSize.height / 2);
+	m_emitter->runAction(Sequence::create(DelayTime::create(50.0), RemoveSelf::create(), NULL));
 
 	return true;
 }

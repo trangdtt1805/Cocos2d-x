@@ -19,7 +19,7 @@ Scene* LogoScene::createScene()
 
 bool LogoScene::init()
 {
-	if (!LayerColor::initWithColor(Color4B(242, 2172, 19, 200)))
+	if (!LayerColor::initWithColor(Color4B(245, 157, 5, 200)))
 	{
 		return false;
 	}
